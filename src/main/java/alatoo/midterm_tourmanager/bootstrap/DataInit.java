@@ -97,6 +97,22 @@ public class DataInit {
                 .locationOfTour(jalalAbad)
                 .tourOrganizer(pamirtravel)
                 .build();
+
+        organizerRepository.save(sunriseoshtravel);
+        organizerRepository.save(aksaitravel);
+        organizerRepository.save(pamirtravel);
+
+        categoryRepository.save(cultural);
+        categoryRepository.save(climbing);
+        categoryRepository.save(trekking);
+
+        locationRepository.save(southOfKyrgyzstan);
+        locationRepository.save(peakLenin);
+        locationRepository.save(jalalAbad);
+
+        tourRepository.save(tulparkul);
+        tourRepository.save(leninpeak);
+        tourRepository.save(saryChelek);
     }
 }
 
