@@ -23,5 +23,4 @@ public class Location {
     @GeneratedValue
     private Long id;
     private String country;
-    private String place;
 }
