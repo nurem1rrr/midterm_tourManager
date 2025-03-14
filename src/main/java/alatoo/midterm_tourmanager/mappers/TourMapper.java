@@ -45,6 +45,6 @@ public class TourMapper {
     }
 
     private OrganizerDto toOrganizerDto(Organizer organizer) {
-        return new OrganizerDto(organizer.getId(), organizer.getName(), organizer.getAddress(), organizer.getPhone())
+        return new OrganizerDto(organizer.getId(), organizer.getName(), organizer.getAddress(), organizer.getPhone());
     }
 }
