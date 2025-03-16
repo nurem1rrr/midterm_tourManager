@@ -74,7 +74,7 @@ public class TourService {
     }
 
     public List<TourDto> getToursByOrganizer(String organizerName) {
-        List<Tour> tours = tourRepository.findByNameOfOrTourOrganizer_Name(organizerName);
+        List<Tour> tours = tourRepository.findByTourOrganizer_Name(organizerName);
         return tours
                 .stream()
                 .map(tourMapper::toDto)
@@ -82,7 +82,7 @@ public class TourService {
     }
 
     public List<TourDto> getToursByLocation(String locationName) {
-        List<Tour> tours = tourRepository.findByLocationOfTour_Location(locationName);
+        List<Tour> tours = tourRepository.findByLocationOfTour_Country(locationName);
         return tours
                 .stream()
                 .map(tourMapper::toDto)

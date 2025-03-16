@@ -10,7 +10,7 @@ public interface TourRepository extends CrudRepository<Tour, Long> {
 
     List<Tour> findByCategoryOfTour_Type(String categoryType);
 
-    List<Tour> findByLocationOfTour_Location(String locationName);
+    List<Tour> findByLocationOfTour_Country(String locationName);
 
-    List<Tour> findByNameOfOrTourOrganizer_Name(String organizerName);
+    List<Tour> findByTourOrganizer_Name(String organizerName);
 }
