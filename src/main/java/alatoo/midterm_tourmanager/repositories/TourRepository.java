@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TourRepository extends CrudRepository<Tour, Long> {
     List<Tour> findAll();
+
+    List<Tour> findByCategoryOfTour_Type(String categoryType);
 }
