@@ -8,15 +8,15 @@ import alatoo.midterm_tourmanager.mappers.OrganizerMapper;
 import alatoo.midterm_tourmanager.mappers.TourMapStructMapper;
 import alatoo.midterm_tourmanager.repositories.TourRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TourService{
+public class TourService {
 
     private final TourRepository tourRepository;
     private final TourMapStructMapper tourMapper;
@@ -24,7 +24,7 @@ public class TourService{
     private final CategoryMapper categoryMapper;
     private final OrganizerMapper organizerMapper;
 
-    public List<TourDto> getAllTours(){
+    public List<TourDto> getAllTours() {
         List<Tour> tours = tourRepository.findAll();
         return tours.stream()
                 .map(tourMapper::toDto)
@@ -43,7 +43,7 @@ public class TourService{
         return tourMapper.toDto(savedTour);
     }
 
-    public TourDto updateTour(TourDto tourDto, Long id) {
+    public TourDto updateTour(Long id, TourDto tourDto) {
         Tour existingTour = tourRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tour not found"));
 
@@ -58,12 +58,12 @@ public class TourService{
         return tourMapper.toDto(updatedTour);
     }
 
-    public TourDto deleteTour(Long id) {
+    public void deleteTourById(Long id) {
         Tour deletedTour = tourRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Tour not found"));
         tourRepository.deleteById(id);
-        return tourMapper.toDto(deletedTour);
+        tourMapper.toDto(deletedTour);
     }
 
     public List<TourDto> getToursByCategory(String categoryType) {
@@ -73,4 +73,34 @@ public class TourService{
                 .collect(Collectors.toList());
     }
 
+    public List<TourDto> getToursByOrganizer(String organizerName) {
+        List<Tour> tours = tourRepository.findByNameOfOrTourOrganizer_Name(organizerName);
+        return tours
+                .stream()
+                .map(tourMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<TourDto> getToursByLocation(String locationName) {
+        List<Tour> tours = tourRepository.findByLocationOfTour_Location(locationName);
+        return tours
+                .stream()
+                .map(tourMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public TourDto partiallyUpdateTour(Long id, Map<String, Object> updates) {
+        Tour tour = tourRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tour not found"));
+
+        updates.forEach((key, value) -> {
+            switch (key) {
+                case "title" -> tour.setTitle((String) value);
+                case "description" -> tour.setDescription((String) value);
+                case "price" -> tour.setPrice(Double.valueOf(value.toString()));
+            }
+        });
+        Tour updatedTour = tourRepository.save(tour);
+        return tourMapper.toDto(updatedTour);
+    }
 }

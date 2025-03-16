@@ -38,11 +38,11 @@ public class OrganizerService {
         return organizerMapper.toDto(savedOrganizer);
     }
 
-    public OrganizerDto deleteOrganizerById(Long id) {
+    public void deleteOrganizerById(Long id) {
         Organizer deletedOrganizer = organizerRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("Organizer not found"));
         organizerRepository.delete(deletedOrganizer);
-        return organizerMapper.toDto(deletedOrganizer);
+        organizerMapper.toDto(deletedOrganizer);
     }
 }

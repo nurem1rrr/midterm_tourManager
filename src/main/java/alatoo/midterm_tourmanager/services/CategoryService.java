@@ -32,4 +32,28 @@ public class CategoryService {
                 .orElseThrow(() -> new RuntimeException("Not found"));
         return categoryMapper.toDto(category);
     }
+
+    public CategoryDto createCategory(CategoryDto categoryDto) {
+        Category category = categoryMapper.toEntity(categoryDto);
+        Category savedCategory = categoryRepository.save(category);
+        return categoryMapper.toDto(savedCategory);
+    }
+
+    public CategoryDto updateCategory(Long id, CategoryDto categoryDto) {
+        Category existingCategory = categoryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Category found"));
+
+        existingCategory.setType(categoryDto.getType());
+
+        Category updatedCategory = categoryRepository.save(existingCategory);
+        return categoryMapper.toDto(updatedCategory);
+    }
+
+    public CategoryDto deleteCategory(Long id) {
+        Category deletedCategory = categoryRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException("Category not found"));
+        categoryRepository.delete(deletedCategory);
+        return categoryMapper.toDto(deletedCategory);
+    }
 }
