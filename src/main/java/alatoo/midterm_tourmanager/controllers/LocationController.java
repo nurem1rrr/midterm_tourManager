@@ -3,6 +3,7 @@ package alatoo.midterm_tourmanager.controllers;
 import alatoo.midterm_tourmanager.dto.LocationDto;
 import alatoo.midterm_tourmanager.entities.Location;
 import alatoo.midterm_tourmanager.services.LocationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Valid
 @RestController
 @RequestMapping("/location")
 @RequiredArgsConstructor
@@ -26,7 +28,7 @@ public class LocationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LocationDto> getLocationById(@PathVariable Long id) {
+    public ResponseEntity<LocationDto> getLocationById(@Valid @PathVariable Long id) {
         return ResponseEntity
                 .ok(locationService.getLocationById(id));
     }

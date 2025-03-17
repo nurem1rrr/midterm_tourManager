@@ -1,9 +1,10 @@
 package alatoo.midterm_tourmanager.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,8 +13,15 @@ import lombok.NoArgsConstructor;
 public class TourDto {
 
     private Long id;
+
+    @NotBlank(message = "Title of tour can not be empty")
+    @Size(min = 3, max = 100)
     private String title;
+
     private String description;
+
+    @NotNull(message = "Price can not be empty")
+    @Min(value = 1)
     private Double price;
     private LocationDto locationOfTour;
     private CategoryDto categoryOfTour;

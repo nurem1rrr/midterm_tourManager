@@ -2,6 +2,7 @@ package alatoo.midterm_tourmanager.controllers;
 
 import alatoo.midterm_tourmanager.dto.OrganizerDto;
 import alatoo.midterm_tourmanager.services.OrganizerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Valid
 @RestController
 @RequestMapping("/organizer")
 @RequiredArgsConstructor
@@ -29,7 +31,7 @@ public class OrganizerController {
     }
 
     @PostMapping
-    public ResponseEntity<OrganizerDto> createOrganizer(@RequestBody OrganizerDto organizerDto) {
+    public ResponseEntity<OrganizerDto> createOrganizer(@Valid @RequestBody OrganizerDto organizerDto) {
         OrganizerDto createdOrganizer = organizerService.createOrganizer(organizerDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)

@@ -2,6 +2,7 @@ package alatoo.midterm_tourmanager.controllers;
 
 import alatoo.midterm_tourmanager.dto.TourDto;
 import alatoo.midterm_tourmanager.services.TourService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@Valid
 @RestController
 @RequestMapping("/tours")
 @RequiredArgsConstructor
@@ -30,7 +32,7 @@ public class TourController {
     }
 
     @PostMapping
-    public ResponseEntity<TourDto> createTour(@RequestBody TourDto tourDto) {
+    public ResponseEntity<TourDto> createTour(@Valid @RequestBody TourDto tourDto) {
         TourDto createdTour = tourService.createTour(tourDto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -39,12 +41,12 @@ public class TourController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TourDto> updateTour(@PathVariable Long id, @RequestBody TourDto tourDto) {
+    public ResponseEntity<TourDto> updateTour(@PathVariable Long id, @Valid @RequestBody TourDto tourDto) {
         return ResponseEntity.ok(tourService.updateTour(id, tourDto));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<TourDto> partiallyUpdateTour(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
+    public ResponseEntity<TourDto> partiallyUpdateTour(@PathVariable Long id, @Valid @RequestBody Map<String, Object> updates) {
         return ResponseEntity.ok(tourService.partiallyUpdateTour(id, updates));
     }
 
