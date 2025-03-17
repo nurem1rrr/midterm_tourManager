@@ -54,19 +54,20 @@ public class TourController {
         return ResponseEntity.ok("Tour deleted successfully");
     }
 
-    @GetMapping("/tours/by-category")
+    @GetMapping("/by-category")
     public List<TourDto> getToursByCategory(@RequestParam String categoryType) {
         return tourService
                 .getToursByCategory(categoryType);
     }
 
-    @GetMapping("/tours/by-organizer")
-    public List<TourDto> getToursByOrganizer(@RequestParam String organizerName) {
-        return tourService
-                .getToursByOrganizer(organizerName);
+    @GetMapping("/by-organizer")
+    public ResponseEntity<List<TourDto>> getToursByOrganizer(@RequestParam("organizerName") String organizerName) {
+        List<TourDto> tours = tourService.getToursByOrganizer(organizerName);
+        return ResponseEntity.ok(tours);
     }
 
-    @GetMapping("/tours/by-location")
+
+    @GetMapping("/by-location")
     public List<TourDto> getToursByLocation(@RequestParam String locationName) {
         return tourService
                 .getToursByLocation(locationName);
