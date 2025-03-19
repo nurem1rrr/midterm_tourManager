@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class LocationService {
+public class LocationService implements LocationServiceImpl{
 
     private final LocationRepository locationRepository;
     private final LocationMapper locationMapper;

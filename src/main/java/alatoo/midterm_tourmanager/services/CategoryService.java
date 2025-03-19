@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryService {
+public class CategoryService implements CategoryServiceImpl {
 
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TourService {
+public class TourService implements TourServiceImpl{
 
     private final TourRepository tourRepository;
     private final TourMapStructMapper tourMapper;

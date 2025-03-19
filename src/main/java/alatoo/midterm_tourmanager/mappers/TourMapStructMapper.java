@@ -2,7 +2,6 @@ package alatoo.midterm_tourmanager.mappers;
 
 import alatoo.midterm_tourmanager.dto.TourDto;
 import alatoo.midterm_tourmanager.entities.Tour;
-import lombok.RequiredArgsConstructor;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {LocationMapper.class, CategoryMapper.class, OrganizerMapper.class})

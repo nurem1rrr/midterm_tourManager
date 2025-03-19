@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class OrganizerService {
+public class OrganizerService implements OrganizerServiceImpl{
 
     private final OrganizerRepository organizerRepository;
     private final OrganizerMapper organizerMapper;
