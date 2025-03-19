@@ -4,6 +4,7 @@ import alatoo.midterm_tourmanager.dto.CategoryDto;
 import alatoo.midterm_tourmanager.entities.Category;
 import alatoo.midterm_tourmanager.mappers.CategoryMapper;
 import alatoo.midterm_tourmanager.repositories.CategoryRepository;
+import alatoo.midterm_tourmanager.services.servImpl.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

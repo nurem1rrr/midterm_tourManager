@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.service_test;
+package alatoo.midterm_tourmanager.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

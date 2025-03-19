@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.service_test;
+package alatoo.midterm_tourmanager.serviceTest;
 
 import alatoo.midterm_tourmanager.dto.CategoryDto;
 import alatoo.midterm_tourmanager.entities.Category;

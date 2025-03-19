@@ -7,6 +7,7 @@ import alatoo.midterm_tourmanager.mappers.LocationMapper;
 import alatoo.midterm_tourmanager.mappers.OrganizerMapper;
 import alatoo.midterm_tourmanager.mappers.TourMapStructMapper;
 import alatoo.midterm_tourmanager.repositories.TourRepository;
+import alatoo.midterm_tourmanager.services.servImpl.TourServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TourService implements TourServiceImpl{
+public class TourService implements TourServiceImpl {
 
     private final TourRepository tourRepository;
     private final TourMapStructMapper tourMapper;

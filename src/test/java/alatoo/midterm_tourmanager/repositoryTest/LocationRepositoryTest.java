@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.repository_test;
+package alatoo.midterm_tourmanager.repositoryTest;
 
 
 import alatoo.midterm_tourmanager.entities.Location;

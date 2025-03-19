@@ -4,6 +4,7 @@ import alatoo.midterm_tourmanager.dto.LocationDto;
 import alatoo.midterm_tourmanager.entities.Location;
 import alatoo.midterm_tourmanager.mappers.LocationMapper;
 import alatoo.midterm_tourmanager.repositories.LocationRepository;
+import alatoo.midterm_tourmanager.services.servImpl.LocationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class LocationService implements LocationServiceImpl{
+public class LocationService implements LocationServiceImpl {
 
     private final LocationRepository locationRepository;
     private final LocationMapper locationMapper;

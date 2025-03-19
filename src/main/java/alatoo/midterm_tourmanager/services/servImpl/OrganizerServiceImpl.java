@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.services;
+package alatoo.midterm_tourmanager.services.servImpl;
 
 import alatoo.midterm_tourmanager.dto.OrganizerDto;
 

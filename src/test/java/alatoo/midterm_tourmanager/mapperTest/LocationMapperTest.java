@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.mapper_test;
+package alatoo.midterm_tourmanager.mapperTest;
 
 import alatoo.midterm_tourmanager.dto.LocationDto;
 import alatoo.midterm_tourmanager.entities.Location;

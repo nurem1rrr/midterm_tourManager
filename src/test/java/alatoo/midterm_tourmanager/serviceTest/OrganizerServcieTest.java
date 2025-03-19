@@ -1,4 +1,4 @@
-package alatoo.midterm_tourmanager.service_test;
+package alatoo.midterm_tourmanager.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -17,7 +17,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
 class OrganizerServiceTest {

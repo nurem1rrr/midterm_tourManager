@@ -4,6 +4,7 @@ import alatoo.midterm_tourmanager.dto.OrganizerDto;
 import alatoo.midterm_tourmanager.entities.Organizer;
 import alatoo.midterm_tourmanager.mappers.OrganizerMapper;
 import alatoo.midterm_tourmanager.repositories.OrganizerRepository;
+import alatoo.midterm_tourmanager.services.servImpl.OrganizerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class OrganizerService implements OrganizerServiceImpl{
+public class OrganizerService implements OrganizerServiceImpl {
 
     private final OrganizerRepository organizerRepository;
     private final OrganizerMapper organizerMapper;
