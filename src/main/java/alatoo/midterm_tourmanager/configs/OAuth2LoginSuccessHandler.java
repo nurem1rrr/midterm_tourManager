@@ -39,7 +39,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
             user = User.builder()
                     .email(email)
                     .username(name)
-                    .password("") // OAuth2 users may not use password
+                    .password("")
                     .role(Role.USER)
                     .build();
             userRepository.save(user);

@@ -21,21 +21,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/auth/**", "/oauth2/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .oauth2Login()
-                .successHandler(oAuth2LoginSuccessHandler)
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
+        return http
+                .csrf(csrf -> csrf.disable())  // Для отключения CSRF
+                .authorizeRequests(authz -> authz
+                        .requestMatchers("/auth/**", "/oauth2/**").permitAll()  // Разрешить доступ
+                        .anyRequest().authenticated())  // Для других запросов требовать аутентификацию
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(oAuth2LoginSuccessHandler))  // OAuth2 SuccessHandler
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // Сессионная политика
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)  // Добавление фильтра JWT
+                .build();
     }
 
     @Bean
